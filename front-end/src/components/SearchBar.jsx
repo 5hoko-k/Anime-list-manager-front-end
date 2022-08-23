@@ -47,13 +47,15 @@ function SearchBar(){
             <div>
                 <div>
                     { Title.length > 0 && (
-                        <ul>
+                        <div className="flex flex-wrap justify-around space-x-2 space-y-2">
                             { Title.map(anime => (
-                                <li key={anime.id}>
-                                    { anime.attributes.abbreviatedTitles }
-                                </li>
+                                <div key={anime.id} className="p-2 border-2 w-1/4">
+                                    <img className="" src= { anime.attributes.posterImage.original } />
+                                    <p>{ anime.attributes.titles.en }</p>
+                                    <p>{ anime.attributes.titles.en_jp }</p>
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     )}   
                 </div>
                 { Title.length }
