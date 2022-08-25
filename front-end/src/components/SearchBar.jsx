@@ -10,7 +10,7 @@ function SearchBar(){
     }
 
     const fetchData = () => {
-        fetch(`https://kitsu.io/api/edge/anime?filter%5Btext%5D= ${ text }`, {
+        fetch(`https://kitsu.io/api/edge/anime?&filter%5Btext%5D= ${ text }&sort=popularityRank`, {
             Headers: { 'Accept': 'application/vnd.api+json',
             'Context-type': 'application/vnd.api+json'}
             })
@@ -26,6 +26,11 @@ function SearchBar(){
         console.log("clicked")
     }
 
+    const fetchKitsuAlgoliaKeys = () => {
+        fetch('https://kitsu.io/api/edge/algolia-keys')
+        .then(res => res.json())
+        .then(data => console.log(data))
+    }
     // useEffect(() => { 
 
     //     const fetchData = () => {
@@ -43,13 +48,14 @@ function SearchBar(){
 
                 <button className="bg-green-700 hover:bg-green-600 rounded-md p-2 w-1/4 text-white" type="button" onClick={ fetchData }> Search </button>
 
+                <button className="bg-green-700 hover:bg-green-600 rounded-md p-2 w-1/4 text-white" type="button" onClick={ fetchKitsuAlgoliaKeys }> Keys </button>
             </div>
             <div>
                 <div>
                     { Title.length > 0 && (
-                        <div className="flex flex-wrap justify-around space-x-2 space-y-2">
+                        <div className="flex flex-wrap justify-evenly space-x-2 space-y-2">
                             { Title.map(anime => (
-                                <div key={anime.id} className="p-2 border-2 w-1/4">
+                                <div key={anime.id} className="p-2 border-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5">
                                     <img className="" src= { anime.attributes.posterImage.original } />
                                     <p>{ anime.attributes.titles.en }</p>
                                     <p>{ anime.attributes.titles.en_jp }</p>
