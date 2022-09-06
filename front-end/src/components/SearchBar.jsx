@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import AlgoliaSearch from './AlgoliaSearch'
 import Kitsu from 'kitsu'
 
@@ -8,24 +9,13 @@ function SearchBar(){
     const [text, setText] = useState()
     const api = new Kitsu()
 
+    const navigate = useNavigate()
+
     const handleSearchInput = e => {
         setText(e.target.value)
     }
 
     const fetchData = () => {
-        // fetch(`https://kitsu.io/api/edge/anime?fields%5Battributes%5D=titles`, {
-        //     Headers: { 'Accept': 'application/vnd.api+json',
-        //     'Context-type': 'application/vnd.api+json'}
-        //     })
-        // .then(res => {
-        //     return res.json()
-        // })
-        // .then(data => {
-        //     console.log(data)
-        //     setTitle(data.data)
-        //     console.log(typeof(Title))
-        //     console.log(data.data)
-        // })
 
         api.get('anime', { 
                             params: { 
@@ -50,6 +40,22 @@ function SearchBar(){
         })
     }
 
+    const goToAnime = e => {
+
+        let animeId = e.target.id
+
+        Title.map((anime) => {
+            if(anime.id === animeId){
+                navigate("/theAnime", {
+                    state: {
+                        "anime": anime
+                    }
+                })
+            }
+        })
+        // console.log(Title.anime)
+    }
+
     return(
         <>
             <div className="flex flex-col justify-center items-center p-5 space-y-5">
@@ -63,24 +69,14 @@ function SearchBar(){
             </div>
             <div>
                 <div>
-                    {Title.length > 0 && 
-                        <ul>
-                            {
-                                Title.map(anime => (
-                                    <li key={ anime.id }>{ anime.popularityRank }</li>
-                                ))
-                            }
-                        </ul>
-                    }
-                </div>
-                <div>
                     { Title.length > 0 && (
                         <div className="flex flex-wrap justify-evenly space-x-2 space-y-2">
                             { Title.map(anime => (
-                                <div key={anime.id} className="p-2 border-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5">
-                                    <img className="" src= { anime.posterImage.original } />
-                                    <p>{ anime.titles.en }</p>
-                                    <p>{ anime.titles.en_jp }</p>
+                                <div key={anime.id} id={anime.id} className="p-2 border-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5" onClick={ goToAnime }>
+                                    <img id={anime.id} className="" src= { anime.posterImage.original } onClick={ goToAnime }/>
+                                    <p id={anime.id} onClick={ goToAnime }>{ anime.titles.en }</p>
+                                    <p id={anime.id} onClick={ goToAnime }>{ anime.titles.en_jp }</p>
+                                    { console.log(anime) }
                                 </div>
                                 ))
                             }
