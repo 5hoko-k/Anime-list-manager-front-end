@@ -7,10 +7,31 @@ function TheAnime() {
 
     return (
         <>
-            <div className="my-52 ml-36">
-                <img className="w-1/4" src= { anime.posterImage.original }/>
-                <p>{ anime.titles.en }</p>
-                <p>{ anime.titles.en_jp }</p>
+            <div className="bg-green-900">
+                <div className="bg-green-600 min-h">
+                    <img src={ anime.coverImage.large } />
+                </div>
+                <div className="flex mx-auto w-3/4 h-full p-5">
+                    <aside className="bg-green-800 p-3 w-1/3">
+                        <div className=" bg-green-800 p-1 rounded-lg shadow-lg">
+                            <img className="rounded-lg shadow-lg w-full" src= { anime.posterImage.small }/>
+                            <p>{ anime.titles.en }</p>
+                            <p>{ anime.titles.en_jp }</p>
+                            <p>{ console.log(anime)}</p>
+                        </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, tempora, delectus qui reiciendis obcaecati natus at aliquid provident nihil ipsa asperiores officia veniam? Tempore esse impedit architecto reprehenderit harum atque?</p>
+                    </aside>
+                    <main className='bg-green-700 p-3'>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis architecto dicta impedit ex accusantium delectus? Vel nam minima provident corporis nisi, perferendis blanditiis eligendi rerum asperiores maiores veritatis dolorem aspernatur.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, tempora, delectus qui reiciendis obcaecati natus at aliquid provident nihil ipsa asperiores officia veniam? Tempore esse impedit architecto reprehenderit harum atque?</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, tempora, delectus qui reiciendis obcaecati natus at aliquid provident nihil ipsa asperiores officia veniam? Tempore esse impedit architecto reprehenderit harum atque?</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, tempora, delectus qui reiciendis obcaecati natus at aliquid provident nihil ipsa asperiores officia veniam? Tempore esse impedit architecto reprehenderit harum atque?</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, tempora, delectus qui reiciendis obcaecati natus at aliquid provident nihil ipsa asperiores officia veniam? Tempore esse impedit architecto reprehenderit harum atque?</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, tempora, delectus qui reiciendis obcaecati natus at aliquid provident nihil ipsa asperiores officia veniam? Tempore esse impedit architecto reprehenderit harum atque?</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, tempora, delectus qui reiciendis obcaecati natus at aliquid provident nihil ipsa asperiores officia veniam? Tempore esse impedit architecto reprehenderit harum atque?</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, tempora, delectus qui reiciendis obcaecati natus at aliquid provident nihil ipsa asperiores officia veniam? Tempore esse impedit architecto reprehenderit harum atque?</p>
+                    </main>
+                </div>
             </div>
         </>
 
