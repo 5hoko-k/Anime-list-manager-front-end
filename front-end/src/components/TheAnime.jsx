@@ -21,7 +21,8 @@ function TheAnime() {
                         </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, tempora, delectus qui reiciendis obcaecati natus at aliquid provident nihil ipsa asperiores officia veniam? Tempore esse impedit architecto reprehenderit harum atque?</p>
                     </aside>
-                    <main className='bg-green-700 p-3'>
+
+                    <main className='bg-green-700 p-3 w-2/3'>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis architecto dicta impedit ex accusantium delectus? Vel nam minima provident corporis nisi, perferendis blanditiis eligendi rerum asperiores maiores veritatis dolorem aspernatur.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, tempora, delectus qui reiciendis obcaecati natus at aliquid provident nihil ipsa asperiores officia veniam? Tempore esse impedit architecto reprehenderit harum atque?</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, tempora, delectus qui reiciendis obcaecati natus at aliquid provident nihil ipsa asperiores officia veniam? Tempore esse impedit architecto reprehenderit harum atque?</p>

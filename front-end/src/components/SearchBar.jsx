@@ -58,33 +58,31 @@ function SearchBar(){
 
     return(
         <>
-            <div className="flex flex-col justify-center items-center p-5 space-y-5">
+        <div className='bg-green-900'>
+            <div className="flex flex-col justify-center items-center px-14 pt-20 pb-10 space-y-5">
 
                 <input className="border-solid border-2 border-green-800 hover:border-green-600 p-2 rounded-md w-full" type='search' placeholder="Search" onChange={ handleSearchInput }/>
 
                 <button className="bg-green-700 hover:bg-green-600 rounded-md p-2 w-1/4 text-white" type="button" onClick={ fetchData }> Search </button>
 
-                <AlgoliaSearch />
-
             </div>
-            <div>
-                <div>
+
+            <div className="flex mx-auto w-3/4 h-full p-5 bg-green-700">
+                
                     { Title.length > 0 && (
                         <div className="flex flex-wrap justify-evenly space-x-2 space-y-2">
                             { Title.map(anime => (
-                                <div key={anime.id} id={anime.id} className="p-2 border-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5" onClick={ goToAnime }>
+                                <div key={anime.id} id={anime.id} className="p-1 border-2 border-green-700 bg-green-900 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5" onClick={ goToAnime }>
                                     <img id={anime.id} className="" src= { anime.posterImage.original } onClick={ goToAnime }/>
-                                    <p id={anime.id} onClick={ goToAnime }>{ anime.titles.en }</p>
-                                    <p id={anime.id} onClick={ goToAnime }>{ anime.titles.en_jp }</p>
+                                    <p id={anime.id} className="text-sm" onClick={ goToAnime }>{ anime.titles.en }</p>
+                                    <p id={anime.id} className="text-sm" onClick={ goToAnime }>{ anime.titles.en_jp }</p>
                                     { console.log(anime) }
                                 </div>
                                 ))
                             }
                         </div>
                     )}   
-                </div>
-                { Title.length }
-                { text }
+            </div>
             </div>
         </>
     )
