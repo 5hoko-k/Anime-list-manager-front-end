@@ -28,7 +28,11 @@ function SearchBar(){
         .then(res => { 
             console.log(res.data)
             setTitle(sortTheResult(res.data))
-            console.log(res.data.id)
+            console.log(res.status)
+         })
+         .catch(err => {
+            console.log(err)
+            alert(err.message)
          })
 
         console.log("clicked")
@@ -58,7 +62,7 @@ function SearchBar(){
 
     return(
         <>
-        <div className='bg-green-900'>
+        <div>
             <div className="flex flex-col justify-center items-center px-14 pt-20 pb-10 space-y-5">
 
                 <input className="border-solid border-2 border-green-800 hover:border-green-600 p-2 rounded-md w-full" type='search' placeholder="Search" onChange={ handleSearchInput }/>
@@ -70,7 +74,7 @@ function SearchBar(){
             <div className="flex mx-auto w-3/4 h-full p-5 bg-green-700">
                 
                     { Title.length > 0 && (
-                        <div className="flex flex-wrap justify-evenly space-x-2 space-y-2">
+                        <div className="flex flex-wrap justify-start">
                             { Title.map(anime => (
                                 <div key={anime.id} id={anime.id} className="p-1 border-2 border-green-700 bg-green-900 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5" onClick={ goToAnime }>
                                     <img id={anime.id} className="" src= { anime.posterImage.original } onClick={ goToAnime }/>
