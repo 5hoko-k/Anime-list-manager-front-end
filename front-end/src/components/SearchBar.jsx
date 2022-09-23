@@ -78,9 +78,14 @@ function SearchBar(){
                             { Title.map(anime => (
                                 <div key={anime.id} id={anime.id} className="p-1 border-2 border-green-700 bg-green-900 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5" onClick={ goToAnime }>
                                     <img id={anime.id} className="" src= { anime.posterImage.original } onClick={ goToAnime }/>
-                                    <p id={anime.id} className="text-sm" onClick={ goToAnime }>{ anime.titles.en }</p>
-                                    <p id={anime.id} className="text-sm" onClick={ goToAnime }>{ anime.titles.en_jp }</p>
-                                    { console.log(anime) }
+                                    <div>
+                                        <label>English Title: </label>
+                                        <p id={anime.id} className="text-sm" onClick={ goToAnime }>{ anime.titles.en }</p>
+                                    </div>
+                                    <div>
+                                        <label>Japanese Title: </label>
+                                        <p id={anime.id} className="text-sm" onClick={ goToAnime }>{ anime.titles.en_jp }</p>
+                                    </div>
                                 </div>
                                 ))
                             }
