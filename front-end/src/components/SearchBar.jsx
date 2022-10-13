@@ -77,7 +77,7 @@ function SearchBar(){
 
     return(
         <>
-        <div className="mx-auto w-3/4 mt-48 h-full">
+        <div className="mx-auto w-3/4 mt-36 h-full">
             <div className="flex flex-col justify-center items-center px-14 pt-10 pb-10 space-y-5">
 
                 <input className="border-solid border-2 border-green-800 hover:border-green-600 p-2 rounded-md w-full" type='search' placeholder="Search" onChange={ handleSearchInput }/>
