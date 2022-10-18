@@ -58,7 +58,7 @@ function SearchBar() {
   };
 
   useEffect(() => {
-    const url = import.meta.env.BASE_URL;
+    const url = "https://anime-manager-app.herokuapp.com/";
     fetch(url)
       .then((res) => {
         return res.json();
