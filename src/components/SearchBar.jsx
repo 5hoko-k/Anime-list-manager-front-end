@@ -76,7 +76,8 @@ function SearchBar() {
   };
 
   useEffect(() => {
-    const url = "https://anime-manager-app.herokuapp.com/";
+    // const url = "https://anime-manager-app.herokuapp.com/";
+    const url = "http://localhost:8000/";
     fetch(url)
       .then((res) => {
 
