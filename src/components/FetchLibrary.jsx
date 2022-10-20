@@ -30,6 +30,9 @@ export function FetchLibrary(){
     async function readBody(res) {
         const reader = res.body.getReader();
         console.log("kakashiiiiiiiiiiiiiiiii")
+
+        let recieved = 0;
+
         while(loading){
             const {done, value} = await reader.read();
             if(done){
@@ -40,11 +43,22 @@ export function FetchLibrary(){
                 console.log("hatakeeeeeeeeeeeeeee")
             }
         }
-        const somn = new TextDecoder('utf-8').decode(chunks);
-        console.log(somn)
-        console.log("somn is printed by now")
 
-        return somn;
+        console.log("stage 1")
+        let body = new Uint8Array(recieved);
+        let position = 0;
+
+        console.log(body)
+        console.log("stage 2")
+        for (let chunk of chunks) {
+            console.log("stage 2.5");
+            body.prototype.set(chunk, position);
+            position += chunk.length;
+            console.log("stage 2.5");
+        }
+
+        console.log("stage 3")
+        return new TextDecoder('utf-8').decode(body);
     }
 
     return { progress }
