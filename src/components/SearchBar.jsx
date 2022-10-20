@@ -1,47 +1,35 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Kitsu from "kitsu";
-import { FetchLibrary } from "./FetchLibrary"
+import { FetchLibrary } from "./FetchLibrary";
 
 function SearchBar() {
   const [Title, setTitle] = useState([]);
-  const [text, setText] = useState();
+  const [searchText, setSearchText] = useState("");
   const [animeData, setAnime] = useState([]);
   const api = new Kitsu();
-  const { progress } = FetchLibrary()
+  const { progress } = FetchLibrary();
 
   const navigate = useNavigate();
-
-  const handleSearchInput = (e) => {
-    setText(e.target.value);
-  };
 
   const fetchData = () => {
     api
       .get("anime", {
         params: {
           filter: {
-            text: text,
+            text: searchText,
           },
+          sort: "popularityRank", // put leading dash (-) if you want to sort in descending order like -popularityRank
         },
       })
       .then((res) => {
         console.log(res.data);
-        setTitle(sortTheResult(res.data));
-        console.log(res.status);
+        setTitle(res.data);
       })
       .catch((err) => {
         console.log(err);
         alert(err.message);
       });
-
-    console.log("clicked");
-  };
-
-  const sortTheResult = (array) => {
-    return array.sort(function (a, b) {
-      return a.popularityRank - b.popularityRank;
-    });
   };
 
   const goToAnime = (e) => {
@@ -62,10 +50,10 @@ function SearchBar() {
   const fetchLibraryData = async () => {
     const data = await progress();
     setAnime(data);
-  }
+  };
 
   useEffect(() => {
-      fetchLibraryData()
+    fetchLibraryData();
   }, []);
 
   return (
@@ -76,11 +64,11 @@ function SearchBar() {
             className="border-solid border-2 border-green-800 hover:border-green-600 p-2 rounded-md w-full"
             type="search"
             placeholder="Search"
-            onChange={handleSearchInput}
+            onChange={(e) => setSearchText(e.target.value)}
           />
 
           <button
-            className="bg-green-700 hover:bg-green-600 rounded-md p-2 w-1/4 text-white"
+            className="bg-green-700 hover:bg-green-600 rounded-md p-2 w-full md:w-1/4 text-white"
             type="button"
             onClick={fetchData}
           >
