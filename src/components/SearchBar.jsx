@@ -42,24 +42,6 @@ function SearchBar() {
     });
   };
 
-  async function progress(res) {
-      const reader = res.body.getReader();
-        // get total length
-        const contentLength = +res.headers.get('Content-Length');
-        // read the data
-        let receivedLength = 0; // received that many bytes at the moment
-        let chunks = []; // array of received binary chunks (comprises the body)
-        while(true) {
-          const {done, value} = await reader.read();
-          if (done) {
-            break;
-          }
-          chunks.push(value);
-          receivedLength += value.length;
-          console.log(`Received ${receivedLength} of ${contentLength}`)
-        }
-  }
-
   const goToAnime = (e) => {
     let animeId = e.target.id;
 
