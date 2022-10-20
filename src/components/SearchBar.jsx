@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Kitsu from "kitsu";
+import { FetchLibrary } from "./FetchLibrary"
 
 function SearchBar() {
   const [Title, setTitle] = useState([]);
   const [text, setText] = useState();
   const [animeData, setAnime] = useState([]);
   const api = new Kitsu();
+  const { progress } = FetchLibrary()
 
   const navigate = useNavigate();
 
@@ -57,20 +59,13 @@ function SearchBar() {
     // console.log(Title.anime)
   };
 
+  const fetchTheData = async () => {
+    const data = await progress();
+    setAnime(data);
+  }
+
   useEffect(() => {
-    // const url = "https://anime-manager-app.herokuapp.com/";
-    const url = "http://localhost:8000/";
-    fetch(url)
-      .then((res) => {
-
-        progress(res)
-
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setAnime(data);
-      });
+      fetchTheData()
   }, []);
 
   return (
