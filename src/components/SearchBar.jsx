@@ -59,13 +59,13 @@ function SearchBar() {
     // console.log(Title.anime)
   };
 
-  const fetchTheData = async () => {
+  const fetchLibraryData = async () => {
     const data = await progress();
     setAnime(data);
   }
 
   useEffect(() => {
-      fetchTheData()
+      fetchLibraryData()
   }, []);
 
   return (
