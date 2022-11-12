@@ -4,8 +4,6 @@ export function FetchLibrary(){
     let results = null;
     let chunks = [];
 
-    const payload = { received, length, loading }
-
     async function progress() {
         loading = true;
         const url = "https://anime-manager-app.herokuapp.com/";
@@ -41,8 +39,15 @@ export function FetchLibrary(){
 
         while(loading){
             const {done, value} = await reader.read();
+            const payload = { detail: { recieved, streamLength, loading } }
+            const onProgress = new CustomEvent('fetch-progress', payload);
+            const onFinished = new CustomEvent('fetch-finished', payload)
+
             if(done){
                 loading = false;
+
+                // Fired when reading the response body finishes
+                window.dispatchEvent(onFinished)
             }else{
                 chunks.push(value);
                 // console.log(chunks)
@@ -50,6 +55,8 @@ export function FetchLibrary(){
                 console.log(chunks)
                 recieved += value.length; 
 
+                // Fired on each .read() - progress tick
+                window.dispatchEvent(onProgress); 
             }
         }
 
