@@ -30,6 +30,8 @@ export function FetchLibrary(){
     async function readBody(res) {
         const reader = res.body.getReader();
         console.log("kakashiiiiiiiiiiiiiiiii")
+        const length = +res.headers.get('content-length'); 
+        console.log(length)
 
         let recieved = 0;
 
@@ -39,8 +41,10 @@ export function FetchLibrary(){
                 loading = false;
             }else{
                 chunks.push(value);
-                console.log(chunks)
+                // console.log(chunks)
                 console.log("hatakeeeeeeeeeeeeeee")
+                console.log(chunks)
+                recieved += value.length; 
             }
         }
 
@@ -52,13 +56,14 @@ export function FetchLibrary(){
         console.log("stage 2")
         for (let chunk of chunks) {
             console.log("stage 2.5");
-            body.prototype.set(chunk, position);
+            body.set(chunk, position);
+            console.log("stage 2.5");
             position += chunk.length;
             console.log("stage 2.5");
         }
 
         console.log("stage 3")
-        return new TextDecoder('utf-8').decode(body);
+        return new TextDecoder().decode(body);
     }
 
     return { progress }
