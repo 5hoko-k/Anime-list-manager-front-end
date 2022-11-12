@@ -61,6 +61,8 @@ function SearchBar() {
 
   const fetchLibraryData = async () => {
     const data = await progress();
+    console.log("heres the data")
+    console.log(data)
     setAnime(data);
   }
 
