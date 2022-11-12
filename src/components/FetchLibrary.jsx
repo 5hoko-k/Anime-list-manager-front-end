@@ -5,7 +5,7 @@ export function FetchLibrary(){
 
     const [recieved, setRecieved] = useState()
     const [length, setLength] = useState()
-
+    const payload = { detail: { recieved, length, loading } }
 
     async function progress() {
         loading = true;
@@ -73,6 +73,6 @@ export function FetchLibrary(){
         return new TextDecoder().decode(body);
     }
 
-    return { progress }
+    return { progress, payload }
 }
 
