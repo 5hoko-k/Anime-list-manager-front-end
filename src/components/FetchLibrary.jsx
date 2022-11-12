@@ -1,3 +1,4 @@
+import { useState } from "react"
 export function FetchLibrary(){
     let loading = false;
     let results = null;
@@ -5,7 +6,7 @@ export function FetchLibrary(){
 
     const [recieved, setRecieved] = useState()
     const [length, setLength] = useState()
-    const payload = { detail: { recieved, length, loading } }
+    const payload = { recieved, length, loading }
 
     async function progress() {
         loading = true;
