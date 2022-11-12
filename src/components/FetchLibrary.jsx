@@ -78,6 +78,6 @@ export function FetchLibrary(){
         return new TextDecoder().decode(body);
     }
 
-    return { progress, payload }
+    return { progress }
 }
 
