@@ -7,6 +7,8 @@ function SearchBar() {
   const [Title, setTitle] = useState([]);
   const [text, setText] = useState();
   const [animeData, setAnime] = useState([]);
+  const [value, setValue] = useState()
+
   const api = new Kitsu();
   const { progress } = FetchLibrary()
 
@@ -37,6 +39,22 @@ function SearchBar() {
 
     console.log("clicked");
   };
+
+  const setProgressbarValue = (payload) => {
+    const { recieved, streamLength, loading } = payload;
+    const value = ((recieved / streamLength) * 100).toFixed(2);
+
+    setValue(value)
+
+  };
+
+  window.addEventListener('fetch-progress', (e) => {
+    setProgressbarValue(e.detail);
+  });
+  
+  window.addEventListener('fetch-finished', (e) => {
+    setProgressbarValue(e.detail);
+  });
 
   const sortTheResult = (array) => {
     return array.sort(function (a, b) {
@@ -89,6 +107,10 @@ function SearchBar() {
             {" "}
             Search{" "}
           </button>
+        </div>
+
+        <div className="text-slate-200">
+          <h1>{value}</h1>
         </div>
 
         <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500">
