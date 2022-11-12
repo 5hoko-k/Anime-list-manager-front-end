@@ -3,6 +3,10 @@ export function FetchLibrary(){
     let results = null;
     let chunks = [];
 
+    const [recieved, setRecieved] = useState()
+    const [length, setLength] = useState()
+
+
     async function progress() {
         loading = true;
         const url = "https://anime-manager-app.herokuapp.com/";
@@ -33,6 +37,8 @@ export function FetchLibrary(){
         const length = +res.headers.get('content-length'); 
         console.log(length)
 
+        setLength(length)
+
         let recieved = 0;
 
         while(loading){
@@ -45,6 +51,7 @@ export function FetchLibrary(){
                 console.log("hatakeeeeeeeeeeeeeee")
                 console.log(chunks)
                 recieved += value.length; 
+                setRecieved(recieved)
             }
         }
 
