@@ -9,6 +9,10 @@ function SearchBar() {
   const [animeData, setAnime] = useState([]);
   const [value, setValue] = useState()
 
+  const [style, setStyle] = useState({
+    width: `${value}`
+  })
+
   const api = new Kitsu();
   const { progress } = FetchLibrary()
 
@@ -90,6 +94,9 @@ function SearchBar() {
 
   return (
     <>
+      <div id="progress-bar" style={style} className="bg-lime-600 p-1">
+
+      </div>
       <div className="mx-auto w-3/4 mt-36 h-full">
         <div className="flex flex-col justify-center items-center px-14 pt-10 pb-10 space-y-5">
           <input
