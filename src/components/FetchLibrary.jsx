@@ -4,9 +4,7 @@ export function FetchLibrary(){
     let results = null;
     let chunks = [];
 
-    const [recieved, setRecieved] = useState()
-    const [length, setLength] = useState()
-    const payload = { recieved, length, loading }
+    const payload = { received, length, loading }
 
     async function progress() {
         loading = true;
@@ -35,10 +33,9 @@ export function FetchLibrary(){
     async function readBody(res) {
         const reader = res.body.getReader();
         console.log("kakashiiiiiiiiiiiiiiiii")
-        const length = +res.headers.get('content-length'); 
-        console.log(length)
+        const streamLength = +res.headers.get('content-length'); 
+        console.log(streamLength)
 
-        setLength(length)
 
         let recieved = 0;
 
@@ -52,7 +49,7 @@ export function FetchLibrary(){
                 console.log("hatakeeeeeeeeeeeeeee")
                 console.log(chunks)
                 recieved += value.length; 
-                setRecieved(recieved)
+
             }
         }
 
