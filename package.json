@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@material-tailwind/react": "^1.2.4",
     "algoliasearch": "^4.14.2",
     "kitsu": "^10.0.2",
     "react": "^18.2.0",

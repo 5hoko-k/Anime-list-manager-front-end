@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Kitsu from "kitsu";
-import { FetchLibrary } from "./FetchLibrary";
+import { FetchLibrary } from "./FetchLibrary"
+import { Progress } from "@material-tailwind/react";
 
 function SearchBar() {
   const [Title, setTitle] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [animeData, setAnime] = useState([]);
+  const [value, setValue] = useState()
+
+
   const api = new Kitsu();
   const { progress } = FetchLibrary();
 
@@ -30,7 +34,42 @@ function SearchBar() {
         console.log(err);
         alert(err.message);
       });
+
+    console.log("clicked");
   };
+
+  const setProgressbarValue = (payload) => {
+    const { recieved, streamLength, loading } = payload;
+    const value = ((recieved / streamLength) * 100).toFixed(2);
+
+    if(loading){
+      setValue(value)
+    }else{
+      setValue(null)
+    }
+  };
+
+  window.addEventListener('fetch-progress', (e) => {
+    setProgressbarValue(e.detail);
+  });
+  
+  window.addEventListener('fetch-finished', (e) => {
+    setProgressbarValue(e.detail);
+  });
+
+  const sortTheResult = (array) => {
+    return array.sort(function (a, b) {
+      return a.popularityRank - b.popularityRank;
+    });
+  };
+
+  function progressViewControl() {
+    if(value){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
   const goToAnime = (e) => {
     let animeId = e.target.id;
@@ -49,6 +88,8 @@ function SearchBar() {
 
   const fetchLibraryData = async () => {
     const data = await progress();
+    console.log("heres the data")
+    console.log(data)
     setAnime(data);
   };
 
@@ -58,6 +99,10 @@ function SearchBar() {
 
   return (
     <>
+      <div>
+        {value && value!='100.00' && <Progress value={value} color="green" variant="gradient" />}
+      </div>
+
       <div className="mx-auto w-3/4 mt-36 h-full">
         <div className="flex flex-col justify-center items-center px-14 pt-10 pb-10 space-y-5">
           <input
@@ -75,6 +120,10 @@ function SearchBar() {
             {" "}
             Search{" "}
           </button>
+        </div>
+
+        <div className="text-slate-200">
+          <h1>{value}</h1>
         </div>
 
         <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500">
