@@ -122,10 +122,6 @@ function SearchBar() {
           </button>
         </div>
 
-        <div className="text-slate-200">
-          <h1>{value}</h1>
-        </div>
-
         <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500">
           {animeData.length > 0 && (
             <div className="flex flex-wrap justify-start">
