@@ -67,6 +67,14 @@ function SearchBar() {
     });
   };
 
+  function progressViewControl() {
+    if(value){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   const goToAnime = (e) => {
     let animeId = e.target.id;
 
