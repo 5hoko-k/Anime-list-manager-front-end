@@ -10,9 +10,6 @@ function SearchBar() {
   const [animeData, setAnime] = useState([]);
   const [value, setValue] = useState()
 
-  const [style, setStyle] = useState({
-    width: `${value}`
-  })
 
   const api = new Kitsu();
   const { progress } = FetchLibrary()
@@ -49,8 +46,11 @@ function SearchBar() {
     const { recieved, streamLength, loading } = payload;
     const value = ((recieved / streamLength) * 100).toFixed(2);
 
-    setValue(value)
-
+    if(loading){
+      setValue(value)
+    }else{
+      setValue(null)
+    }
   };
 
   window.addEventListener('fetch-progress', (e) => {
@@ -104,8 +104,9 @@ function SearchBar() {
   return (
     <>
       <div>
-        {progressViewControl() && <Progress value={value} color="green" />}
+        {value && value!='100.00' && <Progress value={value} color="green" variant="gradient" />}
       </div>
+
       <div className="mx-auto w-3/4 mt-36 h-full">
         <div className="flex flex-col justify-center items-center px-14 pt-10 pb-10 space-y-5">
           <input
