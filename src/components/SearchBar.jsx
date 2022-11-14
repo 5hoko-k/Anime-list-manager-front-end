@@ -132,7 +132,7 @@ function SearchBar() {
                   />
                   <div className="px-2">
                     <div>
-                      <label>English Title: </label>
+                      <label>Eng Title: </label>
                       <p
                         id={anime.data.id}
                         onClick={goToAnime}
@@ -141,7 +141,7 @@ function SearchBar() {
                       </p>
                     </div>
                     <div>
-                      <label>Japanese Title: </label>
+                      <label>Jap Title: </label>
                       <p
                         id={anime.data.id}
                         onClick={goToAnime}
