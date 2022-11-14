@@ -6,8 +6,10 @@ export function FetchLibrary(){
 
     async function progress() {
         loading = true;
-        const url = "https://anime-manager-app.herokuapp.com/";
+        // const url = "https://anime-manager-app.herokuapp.com/";
         // const url = "http://localhost:8000/";
+        const url = "https://anime-list-manager-back-end-production.up.railway.app/"
+        
         try{
             const res = await fetch(url)
 
