@@ -121,7 +121,7 @@ function SearchBar() {
                 <div
                   key={anime.data.id}
                   id={anime.data.id}
-                  className="p-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 text-gray-200"
+                  className="p-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 text-gray-200 text-xs"
                   onClick={goToAnime}
                 >
                   <img
@@ -135,7 +135,6 @@ function SearchBar() {
                       <label>English Title: </label>
                       <p
                         id={anime.data.id}
-                        className="text-sm"
                         onClick={goToAnime}
                       >
                         {anime.data.attributes.titles.en}
@@ -145,7 +144,6 @@ function SearchBar() {
                       <label>Japanese Title: </label>
                       <p
                         id={anime.data.id}
-                        className="text-sm"
                         onClick={goToAnime}
                       >
                         {anime.data.attributes.titles.en_jp}
