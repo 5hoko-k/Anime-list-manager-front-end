@@ -135,7 +135,7 @@ function SearchBar() {
                   <img
                     id={anime.data.id}
                     className=""
-                    src={anime.data.attributes.posterImage.original}
+                    src={anime.data.attributes.posterImage.small}
                     onClick={goToAnime}
                   />
                   <div className="px-2">
