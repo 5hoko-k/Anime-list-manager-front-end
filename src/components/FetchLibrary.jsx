@@ -9,18 +9,16 @@ export function FetchLibrary(){
         // const url = "https://anime-manager-app.herokuapp.com/";
         // const url = "http://localhost:8000/";
         const url = "https://anime-list-manager-back-end-production.up.railway.app/"
-        
+
         try{
             const res = await fetch(url)
 
             if(res.status>=200 && res.status<=300){
                 results = await readBody(res)
                 console.log(results)
-                console.log("yoooooooooo")
                 return JSON.parse(results);
             }else{
                 console.log(res)
-                console.log("yeaaaaaaaaaaaaaaa")
                 throw new Error(res.statusText)
             }
         }catch(err){
@@ -32,10 +30,8 @@ export function FetchLibrary(){
 
     async function readBody(res) {
         const reader = res.body.getReader();
-        console.log("kakashiiiiiiiiiiiiiiiii")
         const streamLength = +res.headers.get('content-length'); 
         console.log(streamLength)
-
 
         let recieved = 0;
 
@@ -53,7 +49,6 @@ export function FetchLibrary(){
             }else{
                 chunks.push(value);
                 // console.log(chunks)
-                console.log("hatakeeeeeeeeeeeeeee")
                 console.log(chunks)
                 recieved += value.length; 
 
@@ -66,14 +61,10 @@ export function FetchLibrary(){
         let body = new Uint8Array(recieved);
         let position = 0;
 
-        console.log(body)
         console.log("stage 2")
         for (let chunk of chunks) {
-            console.log("stage 2.5");
             body.set(chunk, position);
-            console.log("stage 2.5");
             position += chunk.length;
-            console.log("stage 2.5");
         }
 
         console.log("stage 3")
