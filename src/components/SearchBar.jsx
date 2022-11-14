@@ -40,7 +40,7 @@ function SearchBar() {
 
   const setProgressbarValue = (payload) => {
     const { recieved, streamLength, loading } = payload;
-    const value = ((recieved / streamLength) * 100).toFixed(2);
+    const value = Math.round(((recieved / streamLength) * 100));
 
     if(loading){
       setValue(value)
@@ -92,7 +92,7 @@ function SearchBar() {
   return (
     <>
       <div>
-        {value && value!='100.00' && <Progress value={value} color="green" variant="gradient" />}
+        {value && value!=100 && <Progress value={value} color="green" variant="gradient" />}
       </div>
 
       <div className="mx-auto w-3/4 mt-36 h-full">
