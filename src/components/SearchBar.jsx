@@ -8,7 +8,8 @@ function SearchBar() {
   const [Title, setTitle] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [animeData, setAnime] = useState([]);
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState()
+  const [showProgress, setShowProgress] = useState(false)
 
 
   const api = new Kitsu();
@@ -87,12 +88,15 @@ function SearchBar() {
 
   useEffect(() => {
     fetchLibraryData();
+    setTimeout(function () {
+      setShowProgress(true)
+    }, 1000)
   }, []);
 
   return (
     <>
       <div>
-      {value!=100 && <LinearProgress  color="success" />}
+      {showProgress && value!=100 && <LinearProgress  color="success" />}
       </div>
 
       <div className="mx-auto w-3/4 mt-36 h-full">
