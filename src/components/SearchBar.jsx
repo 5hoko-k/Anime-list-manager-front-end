@@ -83,6 +83,9 @@ function SearchBar() {
     const data = await fetchUserLibrary();
     console.log("heres the data")
     console.log(data)
+    if(data){
+      setShowProgress(false)
+    }
     setAnime(data);
   };
 
@@ -96,7 +99,7 @@ function SearchBar() {
   return (
     <>
       <div>
-      {showProgress && value!=100 && <LinearProgress  color="success" />}
+      {showProgress && <LinearProgress color="success" />}
       </div>
 
       <div className="mx-auto w-3/4 mt-36 h-full">
