@@ -13,7 +13,7 @@ function SearchBar() {
 
 
   const api = new Kitsu();
-  const { progress } = FetchLibrary();
+  const { fetchUserLibrary } = FetchLibrary();
 
   const navigate = useNavigate();
 
@@ -80,7 +80,7 @@ function SearchBar() {
   };
 
   const fetchLibraryData = async () => {
-    const data = await progress();
+    const data = await fetchUserLibrary();
     console.log("heres the data")
     console.log(data)
     setAnime(data);

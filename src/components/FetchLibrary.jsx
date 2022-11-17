@@ -4,7 +4,7 @@ export function FetchLibrary(){
     let results = null;
     let chunks = [];
 
-    async function progress() {
+    async function fetchUserLibrary() {
         loading = true;
         // const url = "https://anime-manager-app.herokuapp.com/";
         // const url = "http://localhost:8000/";
@@ -73,6 +73,6 @@ export function FetchLibrary(){
     //     return new TextDecoder().decode(body);
     // }
 
-    return { progress }
+    return { fetchUserLibrary }
 }
 
