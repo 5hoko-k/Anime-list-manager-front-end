@@ -14,9 +14,11 @@ export function FetchLibrary(){
             const res = await fetch(url)
 
             if(res.status>=200 && res.status<=300){
-                results = await readBody(res)
+                // results = await readBody(res)
+                results = res.json();
                 console.log(results)
-                return JSON.parse(results);
+                // return JSON.parse(results);
+                return results;
             }else{
                 console.log(res)
                 throw new Error(res.statusText)
