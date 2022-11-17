@@ -1,12 +1,11 @@
-import { useState } from "react"
+
 export function FetchLibrary(){
     let results = null;
 
     async function fetchUserLibrary() {
-        loading = true;
         // const url = "https://anime-manager-app.herokuapp.com/";
-        // const url = "http://localhost:8000/";
-        const url = "https://anime-list-manager-back-end-production.up.railway.app/"
+        const url = "http://localhost:8000/";
+        // const url = "https://anime-list-manager-back-end-production.up.railway.app/"
 
         try{
             const res = await fetch(url)
@@ -21,8 +20,6 @@ export function FetchLibrary(){
             }
         }catch(err){
           return err
-        }finally{
-            loading = false;
         }
     }
 
