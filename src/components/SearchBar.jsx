@@ -8,7 +8,6 @@ function SearchBar() {
   const [Title, setTitle] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [animeData, setAnime] = useState([]);
-  // const [value, setValue] = useState()
   const [showProgress, setShowProgress] = useState(false)
 
 
@@ -38,25 +37,6 @@ function SearchBar() {
 
     console.log("clicked");
   };
-
-  // const setProgressbarValue = (payload) => {
-  //   const { recieved, streamLength, loading } = payload;
-  //   const value = Math.round(((recieved / streamLength) * 100));
-
-    // if(loading){
-    //   setValue(value)
-    // }else{
-    //   setValue(null)
-    // }
-    // };
-
-  // window.addEventListener('fetch-progress', (e) => {
-  //   setProgressbarValue(e.detail);
-  // });
-  
-  // window.addEventListener('fetch-finished', (e) => {
-  //   setProgressbarValue(e.detail);
-  // });
 
   const sortTheResult = (array) => {
     return array.sort(function (a, b) {
@@ -99,7 +79,6 @@ function SearchBar() {
   return (
     <>
       <div>
-      {/* {showProgress && value!=100 && <LinearProgress color="success" />} */}
       {showProgress && <LinearProgress color="success" />}
       </div>
 
