@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Kitsu from "kitsu";
 import { FetchLibrary } from "./FetchLibrary"
-import { Progress } from "@material-tailwind/react";
+import LinearProgress from '@mui/material/LinearProgress';
 
 function SearchBar() {
   const [Title, setTitle] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [animeData, setAnime] = useState([]);
-  const [value, setValue] = useState()
+  const [value, setValue] = useState(0)
 
 
   const api = new Kitsu();
@@ -92,7 +92,7 @@ function SearchBar() {
   return (
     <>
       <div>
-        {value && value!=100 && <Progress value={value} color="green" variant="gradient" />}
+      {value!=100 && <LinearProgress  color="success" />}
       </div>
 
       <div className="mx-auto w-3/4 mt-36 h-full">
