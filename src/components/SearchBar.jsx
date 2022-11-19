@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Kitsu from "kitsu";
 import { FetchLibrary } from "./FetchLibrary"
 import LinearProgress from '@mui/material/LinearProgress';
+import Button from '@mui/material/Button'
 
 function SearchBar() {
   const [Title, setTitle] = useState([]);
@@ -83,22 +84,22 @@ function SearchBar() {
       </div>
 
       <div className="mx-auto w-3/4 mt-36 h-full">
-        <div className="flex flex-col justify-center items-center px-14 pt-10 pb-10 space-y-5">
+        <div className="flex flex-row justify-end items-center px-1 pt-10 pb-6 space-x-5">
           <input
-            className="border-solid border-2 border-green-800 hover:border-green-600 p-2 rounded-md w-full"
+            className="border-solid border-2 border-green-800 hover:border-green-600 p-1 rounded-md"
             type="search"
             placeholder="Search"
             onChange={(e) => setSearchText(e.target.value)}
           />
-
-          <button
-            className="bg-green-700 hover:bg-green-600 rounded-md p-2 w-full md:w-1/4 text-white"
+          <Button variant='contained' color='success' onClick={fetchData}> Search </Button>
+          {/* <button
+            className="bg-green-700 hover:bg-green-600 rounded-md p-1 md:w-1/4 text-white"
             type="button"
             onClick={fetchData}
           >
             {" "}
             Search{" "}
-          </button>
+          </button> */}
         </div>
 
         <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500">
