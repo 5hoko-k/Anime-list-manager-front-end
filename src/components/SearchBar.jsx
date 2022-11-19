@@ -86,7 +86,7 @@ function SearchBar() {
       <div className="mx-auto w-3/4 mt-36 h-full">
         <div className="flex flex-row justify-end items-center px-1 pt-10 pb-6 space-x-5">
           <input
-            className="border-solid border-2 border-green-800 hover:border-green-600 p-1 rounded-md"
+            className="border-solid border-2 border-green-800 hover:border-green-900 p-1 rounded-md"
             type="search"
             placeholder="Search"
             onChange={(e) => setSearchText(e.target.value)}
@@ -102,7 +102,7 @@ function SearchBar() {
           </button> */}
         </div>
 
-        <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500">
+        <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500 border border-green-600">
           {animeData.length > 0 && (
             <div className="flex flex-wrap justify-start">
               {animeData.map((anime) => (
@@ -120,7 +120,6 @@ function SearchBar() {
                   />
                   <div className="px-2">
                     <div>
-                      <label>Eng Title: </label>
                       <p
                         id={anime.data.id}
                         onClick={goToAnime}
@@ -129,7 +128,6 @@ function SearchBar() {
                       </p>
                     </div>
                     <div>
-                      <label>Jap Title: </label>
                       <p
                         id={anime.data.id}
                         onClick={goToAnime}
