@@ -1,7 +1,7 @@
 function Footer() {
     return (
         <>
-            <div className="w-full bg-bushGreen-shades-200 p-5">
+            <div className="w-full mt-auto bg-bushGreen-shades-200 p-5">
                 The footer
             </div>
         </>
