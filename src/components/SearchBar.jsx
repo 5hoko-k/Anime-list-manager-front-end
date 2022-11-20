@@ -4,6 +4,7 @@ import Kitsu from "kitsu";
 import { FetchLibrary } from "./FetchLibrary"
 import LinearProgress from '@mui/material/LinearProgress';
 import Button from '@mui/material/Button'
+import Footer from "./Footer";
 
 function SearchBar() {
   const [Title, setTitle] = useState([]);
@@ -79,8 +80,9 @@ function SearchBar() {
 
   return (
     <>
+    <div className="flex flex-col min-h-screen">
       <div>
-      {showProgress && <LinearProgress color="success" />}
+        {showProgress && <LinearProgress color="success" />}
       </div>
 
       <div className="mx-auto w-3/4 mt-36 h-full">
@@ -104,7 +106,7 @@ function SearchBar() {
 
         <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500 border border-green-600">
           {animeData.length > 0 && (
-            <div className="flex flex-wrap justify-start">
+            <div className="flex flex-wrap justify-start h-full">
               {animeData.map((anime) => (
                 <div
                   key={anime.data.id}
@@ -142,7 +144,10 @@ function SearchBar() {
           )}
         </div>
       </div>
-    </>
+      <Footer />
+
+    </div>
+          </>
   );
 }
 
