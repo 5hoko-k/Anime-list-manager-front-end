@@ -9,8 +9,8 @@ import AnimeLibray from "./AnimeLibrary";
 import Search from "./Search";
 
 function Home() {
-  const [showLibrary, setShowLibrary] = useState([true]);
-  const [showSearchResult, setShowSearchResult] = useState([false]);
+  const [showLibrary, setShowLibrary] = useState(true);
+  const [showSearchResult, setShowSearchResult] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [animeData, setAnime] = useState([]);
   const [showProgress, setShowProgress] = useState(false)
@@ -28,14 +28,13 @@ function Home() {
     api.get("anime", {
         params: {
           filter: {
-            text: searchText,
-          },
-          sort: "popularityRank", // put leading dash (-) if you want to sort in descending order like -popularityRank
+            text: searchText
+           }
         },
       })
       .then((res) => {
         if (res.data){
-          searchResultProps = {"searchResults":res.data}
+          searchResultProps = {"searchResults": sortTheResult(res.data)}
           setAnime(searchResultProps);
           setShowLibrary(false)
           setShowSearchResult(true)
@@ -68,7 +67,6 @@ function Home() {
         });
       }
     });
-    // console.log(Title.anime)
   };
 
   const fetchLibraryData = async () => {
@@ -108,14 +106,6 @@ function Home() {
             onChange={(e) => setSearchText(e.target.value)}
           />
           <Button variant='contained' color='success' onClick={fetchData}> Search </Button>
-          {/* <button
-            className="bg-green-700 hover:bg-green-600 rounded-md p-1 md:w-1/4 text-white"
-            type="button"
-            onClick={fetchData}
-          >
-            {" "}
-            Search{" "}
-          </button> */}
         </div>
 
         <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500 border border-green-600">
