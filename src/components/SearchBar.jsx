@@ -5,12 +5,18 @@ import { FetchLibrary } from "./FetchLibrary"
 import LinearProgress from '@mui/material/LinearProgress';
 import Button from '@mui/material/Button'
 import Footer from "./Footer";
+import AnimeLibray from "./AnimeLibrary";
+import Search from "./Search";
 
 function SearchBar() {
-  const [Title, setTitle] = useState([]);
+  const [showLibrary, setShowLibrary] = useState([true]);
+  const [showSearchResult, setShowSearchResult] = useState([false]);
   const [searchText, setSearchText] = useState("");
   const [animeData, setAnime] = useState([]);
   const [showProgress, setShowProgress] = useState(false)
+
+  let animeLibraryProps = null;
+  let searchResultProps = null;
 
 
   const api = new Kitsu();
@@ -19,8 +25,7 @@ function SearchBar() {
   const navigate = useNavigate();
 
   const fetchData = () => {
-    api
-      .get("anime", {
+    api.get("anime", {
         params: {
           filter: {
             text: searchText,
@@ -29,8 +34,13 @@ function SearchBar() {
         },
       })
       .then((res) => {
-        console.log(res.data);
-        setTitle(res.data);
+        if (res.data){
+          searchResultProps = {"searchResults":res.data}
+          setAnime(searchResultProps);
+          setShowLibrary(false)
+          setShowSearchResult(true)
+        }
+
       })
       .catch((err) => {
         console.log(err);
@@ -68,7 +78,10 @@ function SearchBar() {
     if(data){
       setShowProgress(false)
     }
-    setAnime(data);
+    animeLibraryProps = {"library":data}
+    setAnime(animeLibraryProps);
+    setShowLibrary(true)
+    setShowSearchResult(false)
   };
 
   useEffect(() => {
@@ -76,6 +89,7 @@ function SearchBar() {
     setTimeout(function () {
       setShowProgress(true)
     }, 1000)
+    setShowLibrary(true)
   }, []);
 
   return (
@@ -105,43 +119,9 @@ function SearchBar() {
         </div>
 
         <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500 border border-green-600">
-          {animeData.length > 0 && (
-            <div className="flex flex-wrap justify-start h-full">
-              {animeData.map((anime) => (
-                <div
-                  key={anime.data.id}
-                  id={anime.data.id}
-                  className="p-2 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 text-gray-200 text-xs"
-                  onClick={goToAnime}
-                >
-                  <img
-                    id={anime.data.id}
-                    className=""
-                    src={anime.data.attributes.posterImage.small}
-                    onClick={goToAnime}
-                  />
-                  <div className="px-2">
-                    <div>
-                      <p
-                        id={anime.data.id}
-                        onClick={goToAnime}
-                      >
-                        {anime.data.attributes.titles.en}
-                      </p>
-                    </div>
-                    <div>
-                      <p
-                        id={anime.data.id}
-                        onClick={goToAnime}
-                      >
-                        {anime.data.attributes.titles.en_jp}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+          {showLibrary && <AnimeLibray props={animeData} goToAnime={goToAnime} />}
+
+          { showSearchResult && <Search props={animeData} goToAnime={goToAnime} />}
         </div>
       </div>
       <Footer />
