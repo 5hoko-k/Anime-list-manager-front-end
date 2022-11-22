@@ -1,8 +1,6 @@
-import SearchBar from "./components/SearchBar"
-
 import { BrowserRouter as Router, Route, Routes, } from "react-router-dom"
 import TheAnime from "./components/TheAnime"
-import Footer from "./components/Footer"
+import Home from "./components/Home"
 
 function App() {
 
@@ -10,7 +8,7 @@ function App() {
     <>
         <Router>
           <Routes>
-            <Route path='/' element={ <SearchBar /> } />
+            <Route path='/' element={ <Home /> } />
             <Route path='/theAnime' element={ <TheAnime /> } />
           </Routes>
         </Router>
