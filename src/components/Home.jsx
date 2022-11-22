@@ -8,7 +8,7 @@ import Footer from "./Footer";
 import AnimeLibray from "./AnimeLibrary";
 import Search from "./Search";
 
-function SearchBar() {
+function Home() {
   const [showLibrary, setShowLibrary] = useState([true]);
   const [showSearchResult, setShowSearchResult] = useState([false]);
   const [searchText, setSearchText] = useState("");
@@ -131,4 +131,4 @@ function SearchBar() {
   );
 }
 
-export default SearchBar;
+export default Home;
