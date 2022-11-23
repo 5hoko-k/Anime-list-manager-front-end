@@ -19,6 +19,7 @@ export function FetchLibrary(){
                 throw new Error(res.statusText)
             }
         }catch(err){
+
           return err
         }
     }
