@@ -7,6 +7,7 @@ import Button from '@mui/material/Button'
 import Footer from "./Footer";
 import AnimeLibray from "./AnimeLibrary";
 import Search from "./Search";
+import ErrorPage from "./ErrorPage";
 
 function Home() {
   const [showLibrary, setShowLibrary] = useState(true);
@@ -14,6 +15,7 @@ function Home() {
   const [searchText, setSearchText] = useState("");
   const [animeData, setAnime] = useState([]);
   const [showProgress, setShowProgress] = useState(false)
+  const [showError, setShowError] = useState(false)
 
   let animeLibraryProps = null;
   let searchResultProps = null;
@@ -71,15 +73,22 @@ function Home() {
 
   const fetchLibraryData = async () => {
     const data = await fetchUserLibrary();
-    console.log("heres the data")
-    console.log(data)
+    console.log(data.message)
     if(data){
       setShowProgress(false)
     }
-    animeLibraryProps = {"library":data}
-    setAnime(animeLibraryProps);
-    setShowLibrary(true)
-    setShowSearchResult(false)
+
+    if(data.message == 'Failed to fetch'){
+      setShowLibrary(false)
+      setShowSearchResult(false)
+      setShowError(true)
+    }else{
+      animeLibraryProps = {"library":data}
+      setAnime(animeLibraryProps);
+      setShowLibrary(true)
+      setShowSearchResult(false)
+    }
+    
   };
 
   useEffect(() => {
@@ -112,6 +121,8 @@ function Home() {
           {showLibrary && <AnimeLibray props={animeData} goToAnime={goToAnime} />}
 
           { showSearchResult && <Search props={animeData} goToAnime={goToAnime} />}
+
+          {showError && <ErrorPage />}
         </div>
       </div>
       <Footer />
