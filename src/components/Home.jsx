@@ -75,15 +75,14 @@ function Home() {
     const data = await fetchUserLibrary();
     console.log(data.message)
     console.log(data)
-    if(data){
-      setShowProgress(false)
-    }
 
     if(data.message == 'Failed to fetch'){
+      setShowProgress(false)
       setShowLibrary(false)
       setShowSearchResult(false)
       setShowError(true)
     }else{
+      setShowProgress(false)
       animeLibraryProps = {"library":data}
       setAnime(animeLibraryProps);
       setShowLibrary(true)
