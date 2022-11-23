@@ -74,6 +74,7 @@ function Home() {
   const fetchLibraryData = async () => {
     const data = await fetchUserLibrary();
     console.log(data.message)
+    console.log(data)
     if(data){
       setShowProgress(false)
     }
