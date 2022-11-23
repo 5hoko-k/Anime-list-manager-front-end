@@ -13,8 +13,8 @@ function Error404() {
           <p>
             Use these links to go to different <e>REAL</e> parts of our site
           </p>
-          <ul>
-            <li><Link href="/">Click here to go to the home page</Link></li>
+          <ul className="p-2">
+            <li><Link href="/">Home</Link></li>
           </ul>
           
         </div>
