@@ -1,4 +1,4 @@
-function Search({props, goToAnime}) {
+function SearchResults({props, goToAnime}) {
     let animeData = props.searchResults;
     return (
         <>       
@@ -31,4 +31,4 @@ function Search({props, goToAnime}) {
     )
 }
 
-export default Search;
+export default SearchResults;

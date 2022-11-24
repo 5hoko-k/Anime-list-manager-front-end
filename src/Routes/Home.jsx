@@ -6,8 +6,8 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Button from '@mui/material/Button'
 import Footer from "../components/Footer";
 import AnimeLibray from "../components/AnimeLibrary";
-import Search from "../components/Search";
 import ErrorPage from "../components/ErrorPage";
+import SearchResults from "../components/SearchResults";
 
 function Home() {
   const [showLibrary, setShowLibrary] = useState(true);
@@ -119,7 +119,7 @@ function Home() {
         <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500 border border-green-600">
           {showLibrary && <AnimeLibray props={animeData} goToAnime={goToAnime} />}
 
-          { showSearchResult && <Search props={animeData} goToAnime={goToAnime} />}
+          { showSearchResult && <SearchResults props={animeData} goToAnime={goToAnime} />}
 
           {showError && <ErrorPage />}
         </div>
