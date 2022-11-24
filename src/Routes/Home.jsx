@@ -26,8 +26,8 @@ function Home() {
 
   const goToAnime = (e) => {
     let animeId = e.target.id;
-
-    animeData.map((anime) => {
+    let anime = animeData.library
+    anime.map((anime) => {
       if (anime.data.id === animeId) {
         navigate("/theAnime", {
           state: {
@@ -48,6 +48,7 @@ function Home() {
       setShowError(true)
     }else{
       setShowProgress(false)
+      console.log(data)
       animeLibraryProps = {"library":data}
       setAnime(animeLibraryProps);
       setShowLibrary(true)
