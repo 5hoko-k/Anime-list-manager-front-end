@@ -17,8 +17,7 @@ function SearchResults(props) {
           }
         });
       };
-
-    console.log(animeData)
+      
     return (
         <>       
             {animeData && 

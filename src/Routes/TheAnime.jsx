@@ -5,8 +5,6 @@ function TheAnime() {
 
     const { state } = useLocation()
     const { anime } = state
-    console.log(anime)
-    console.log('yahooooooooooo')
 
     const showCharacters = () => {
         console.log(anime.data.animeCharacters)

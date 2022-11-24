@@ -22,7 +22,6 @@ function Search(props) {
           if(res.status>=200 && res.status<=300){
               try{
                 results = await res.json();
-                console.log(results)
 
                 searchResultProps = {"searchResults": sortTheResult(results)}
                 setAnime(searchResultProps);
@@ -42,7 +41,6 @@ function Search(props) {
         return err
       }
     
-        console.log("clicked");
       };
 
       const sortTheResult = (array) => {
