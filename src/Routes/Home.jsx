@@ -78,7 +78,7 @@ function Home() {
         <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500 border border-green-600">
           {showLibrary && <AnimeLibray props={animeData} goToAnime={goToAnime} />}
 
-          { showSearchResult && <SearchResults props={animeData} goToAnime={goToAnime} />}
+          { showSearchResult && <SearchResults theAnimes={animeData} />}
 
           {showError && <ErrorPage />}
         </div>
