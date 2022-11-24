@@ -11,29 +11,36 @@ function Search(props) {
 
     const [searchText, setSearchText] = useState("");
     const api = new Kitsu();
+    let results = null;
 
-    const fetchData = () => {
-        api.get("anime", {
-            params: {
-              filter: {
-                text: searchText
-               }
-            },
-          })
-          .then((res) => {
-            if (res.data){
-              searchResultProps = {"searchResults": sortTheResult(res.data)}
-              setAnime(searchResultProps);
-              setShowLibrary(false)
-              setShowError(false)
-              setShowSearchResult(true)
-            }
-    
-          })
-          .catch((err) => {
-            console.log(err);
-            alert(err.message);
-          });
+    const fetchData = async () => {
+        const url = "http://localhost:8000/search/"+ searchText
+
+        try{
+          const res = await fetch(url)
+
+          if(res.status>=200 && res.status<=300){
+              try{
+                results = await res.json();
+                console.log(results)
+
+                searchResultProps = {"searchResults": sortTheResult(results)}
+                setAnime(searchResultProps);
+                setShowLibrary(false)
+                setShowError(false)
+                setShowSearchResult(true)
+              }catch(err){
+                console.log(err)
+              }
+              return results;
+          }else{
+              console.log(res)
+              throw new Error(res.statusText)
+          }
+      }catch(err){
+
+        return err
+      }
     
         console.log("clicked");
       };
