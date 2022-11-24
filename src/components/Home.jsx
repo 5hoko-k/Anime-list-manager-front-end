@@ -39,6 +39,7 @@ function Home() {
           searchResultProps = {"searchResults": sortTheResult(res.data)}
           setAnime(searchResultProps);
           setShowLibrary(false)
+          setShowError(false)
           setShowSearchResult(true)
         }
 
