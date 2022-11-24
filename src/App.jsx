@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes, } from "react-router-dom"
-import TheAnime from "./components/TheAnime"
-import Home from "./components/Home"
-import Error404 from "./components/Error404"
+import TheAnime from "./Routes/TheAnime"
+import Home from "./Routes/Home"
+import Error404 from "./Routes/Error404"
 
 function App() {
 
