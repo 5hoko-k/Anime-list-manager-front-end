@@ -5,6 +5,8 @@ function TheAnime() {
 
     const { state } = useLocation()
     const { anime } = state
+    console.log(anime)
+    console.log('yahooooooooooo')
 
     const showCharacters = () => {
         console.log(anime.data.animeCharacters)
@@ -25,14 +27,14 @@ function TheAnime() {
         <>
             <div className="bg-bushGreen-shades-800 text-slate-200">
                 <div className="bg-bushGreen-shades-600 min-h">
-                    <img src={ anime.data.attributes.coverImage.large } />
+                    <img src={ anime.attributes.coverImage.large } />
                 </div>
                 <div className="flex mx-auto w-3/4 h-full">
                     <aside className="bg-bushGreen-shades-400 p-3 w-1/3">
                         <div className=" bg-green-800 p-1 rounded-lg shadow-lg">
-                            <img className="rounded-lg shadow-lg w-full" src= { anime.data.attributes.posterImage.small }/>
-                            <p>{ anime.data.attributes.titles.en }</p>
-                            <p>{ anime.data.attributes.titles.en_jp }</p>
+                            <img className="rounded-lg shadow-lg w-full" src= { anime.attributes.posterImage.small }/>
+                            <p>{ anime.attributes.titles.en }</p>
+                            <p>{ anime.attributes.titles.en_jp }</p>
                             <p>{ console.log(anime)}</p>
                         </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, tempora, delectus qui reiciendis obcaecati natus at aliquid provident nihil ipsa asperiores officia veniam? Tempore esse impedit architecto reprehenderit harum atque?</p>
