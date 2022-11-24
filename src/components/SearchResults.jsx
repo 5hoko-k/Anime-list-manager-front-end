@@ -1,5 +1,24 @@
-function SearchResults({props, goToAnime}) {
-    let animeData = props.searchResults;
+import { useNavigate } from "react-router-dom";
+
+function SearchResults(props) {
+    let animeData = props.theAnimes.searchResults;
+    const navigate = useNavigate();
+
+    const goToAnime = (e) => {
+        let animeId = e.target.id;
+
+        animeData.map((anime) => {
+          if (anime.id === animeId) {
+            navigate("/theAnime", {
+              state: {
+                anime: anime,
+              },
+            });
+          }
+        });
+      };
+
+    console.log(animeData)
     return (
         <>       
             {animeData && 
@@ -13,15 +32,15 @@ function SearchResults({props, goToAnime}) {
                                 <img
                                     id={anime.id}
                                     className=""
-                                    src={anime.posterImage.small}
+                                    src={anime.attributes.posterImage.small}
                                     onClick={goToAnime}
                                 />
                                 <div className="px-2">
                                     <p id={anime.id} onClick={goToAnime}>
-                                        {anime.titles.en}
+                                        {anime.attributes.titles.en}
                                     </p>      
                                     <p id={anime.id} onClick={goToAnime}>
-                                        {anime.titles.en_jp}
+                                        {anime.attributes.titles.en_jp}
                                     </p>
                                 </div>
                         </div> ))}
