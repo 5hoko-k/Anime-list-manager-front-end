@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Kitsu from "kitsu";
-import { FetchLibrary } from "./FetchLibrary"
+import { FetchLibrary } from "../components/FetchLibrary"
 import LinearProgress from '@mui/material/LinearProgress';
 import Button from '@mui/material/Button'
-import Footer from "./Footer";
-import AnimeLibray from "./AnimeLibrary";
-import Search from "./Search";
-import ErrorPage from "./ErrorPage";
+import Footer from "../components/Footer";
+import AnimeLibray from "../components/AnimeLibrary";
+import Search from "../components/Search";
+import ErrorPage from "../components/ErrorPage";
 
 function Home() {
   const [showLibrary, setShowLibrary] = useState(true);

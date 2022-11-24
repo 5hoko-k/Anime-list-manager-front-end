@@ -1,6 +1,6 @@
 import { Link } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
-import Footer from "./Footer";
+import Footer from "../components/Footer";
 
 function Error404() {
 
