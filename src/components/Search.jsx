@@ -43,6 +43,12 @@ function Search(props) {
     
       };
 
+      const keyListener = (e) => {
+        if(e.key === 'Enter'){
+          fetchData()
+        }
+      }
+
       const sortTheResult = (array) => {
         return array.sort(function (a, b) {
           return a.popularityRank - b.popularityRank;
@@ -56,7 +62,7 @@ function Search(props) {
                     className="border-solid border-2 border-green-800 hover:border-green-900 p-1 rounded-md"
                     type="search"
                     placeholder="Search"
-                    onChange={(e) => setSearchText(e.target.value)}
+                    onChange={(e) => setSearchText(e.target.value)} onKeyDown={keyListener}
                 />
                 <Button variant='contained' color='success' onClick={fetchData}> Search </Button>
                 </div>

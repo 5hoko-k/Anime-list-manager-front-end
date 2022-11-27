@@ -5,7 +5,7 @@ function TheAnime() {
 
     const { state } = useLocation()
     const { anime } = state
-
+    
     const showCharacters = () => {
         console.log(anime.data.animeCharacters)
 
