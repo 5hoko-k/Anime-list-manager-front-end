@@ -31,7 +31,7 @@ function Home() {
       if (anime.data.id === animeId) {
         navigate("/theAnime", {
           state: {
-            anime: anime,
+            anime: anime.data,
           },
         });
       }
