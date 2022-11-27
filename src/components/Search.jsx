@@ -14,6 +14,10 @@ function Search(props) {
     const api = new Kitsu();
     let results = null;
 
+    const clearInputField = () => {
+      document.getElementById("search").value = ""
+    }
+
     const fetchData = async () => {
         const url = "http://localhost:8000/search/"+ searchText
         setShowProgress(true)
@@ -35,6 +39,7 @@ function Search(props) {
                 console.log(err)
                 setShowProgress(false)
               }
+              clearInputField()
               return results;
           }else{
               console.log(res)
@@ -63,7 +68,7 @@ function Search(props) {
     return(
         <>
             <div className="flex flex-row justify-end items-center px-1 pt-10 pb-6 space-x-5">
-                <input
+                <input id="search"
                     className="border-solid border-2 border-green-800 hover:border-green-900 p-1 rounded-md"
                     type="search"
                     placeholder="Search"
