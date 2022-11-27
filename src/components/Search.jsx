@@ -7,6 +7,7 @@ function Search(props) {
     let setShowSearchResult = props.searchResultTrigger
     let setShowError = props.errorTrigger
     let setAnime = props.setAnimeList
+    let setShowProgress = props.progressBarTrigger
     let searchResultProps = null;
 
     const [searchText, setSearchText] = useState("");
@@ -15,6 +16,7 @@ function Search(props) {
 
     const fetchData = async () => {
         const url = "http://localhost:8000/search/"+ searchText
+        setShowProgress(true)
 
         try{
           const res = await fetch(url)
@@ -28,12 +30,15 @@ function Search(props) {
                 setShowLibrary(false)
                 setShowError(false)
                 setShowSearchResult(true)
+                setShowProgress(false)
               }catch(err){
                 console.log(err)
+                setShowProgress(false)
               }
               return results;
           }else{
               console.log(res)
+              setShowProgress(false)
               throw new Error(res.statusText)
           }
       }catch(err){
