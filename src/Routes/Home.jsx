@@ -74,7 +74,7 @@ function Home() {
 
       <div className="mx-auto w-3/4 mt-36 h-full">
 
-        <Search libraryTrigger={setShowLibrary} searchResultTrigger={setShowSearchResult} errorTrigger={setShowError} setAnimeList={setAnime}/>
+        <Search libraryTrigger={setShowLibrary} searchResultTrigger={setShowSearchResult} errorTrigger={setShowError} setAnimeList={setAnime} progressBarTrigger={setShowProgress}/>
 
         <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500 border border-green-600">
           {showLibrary && <AnimeLibray props={animeData} goToAnime={goToAnime} />}
