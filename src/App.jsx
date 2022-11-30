@@ -1,19 +1,25 @@
-import { BrowserRouter as Router, Route, Routes, } from "react-router-dom"
+import { createBrowserRouter, RouterProvider, Router } from "react-router-dom"
+
 import TheAnime from "./Routes/TheAnime"
 import Home from "./Routes/Home"
 import Error404 from "./Routes/Error404"
 
 function App() {
 
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Home />
+    },
+    {
+      path: '/theAnime',
+      element: <TheAnime />
+    }
+  ])
+
   return (
     <>
-        <Router>
-          <Routes>
-            <Route path='/' element={ <Home /> } />
-            <Route path='/theAnime' element={ <TheAnime /> } />
-            <Route path="*" element={ <Error404 /> } />
-          </Routes>
-        </Router>
+        <RouterProvider router={router} />
     </>
   )
 }
