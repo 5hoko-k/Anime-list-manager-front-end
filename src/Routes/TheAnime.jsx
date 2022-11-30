@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useState } from 'react'
+import Footer from "../components/Footer";
 
 function TheAnime() {
 
@@ -56,6 +57,8 @@ function TheAnime() {
                         </div>
                     </main>
                 </div>
+                
+                <Footer />
             </div>
         </>
 
