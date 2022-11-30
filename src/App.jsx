@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Router } from "react-router-dom"
+import { createBrowserRouter, RouterProvider, Route } from "react-router-dom"
 
 import TheAnime from "./Routes/TheAnime"
 import Home from "./Routes/Home"
@@ -9,7 +9,8 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Home />
+      element: <Home />,
+      errorElement: <Error404 />
     },
     {
       path: '/theAnime',
