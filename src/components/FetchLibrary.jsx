@@ -3,15 +3,13 @@ export function FetchLibrary(){
     let results = null;
 
     async function fetchUserLibrary() {
-        // const url = "https://anime-manager-app.herokuapp.com/";
-        // const url = "http://localhost:8000/";
-        const url = "https://anime-list-manager-back-end-production.up.railway.app/"
-
+        const url = import.meta.env.WEB_URL;
+i
         try{
             const res = await fetch(url)
 
             if(res.status>=200 && res.status<=300){
-                results = res.json();
+                results = await res.json();
                 console.log(results)
                 return results;
             }else{

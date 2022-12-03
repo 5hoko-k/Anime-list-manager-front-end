@@ -19,8 +19,8 @@ function Search(props) {
     }
 
     const fetchData = async () => {
-        const url = "https://anime-list-manager-back-end-production.up.railway.app/search/"+ searchText
-        // const url = "http://localhost:8000/search/"+ searchText
+        const url = import.meta.env.WEB_URL + searchText
+
         setShowProgress(true)
 
         try{
