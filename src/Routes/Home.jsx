@@ -39,7 +39,7 @@ function Home() {
   };
 
   const fetchLibraryData = async () => {
-    const url = import.meta.env.VITE_LOCAL_URL;
+    const url = import.meta.env.VITE_WEB_URL;
     const data = await fetchUserLibrary(url);
 
     if(data.message == 'Failed to fetch'){
