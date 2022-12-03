@@ -39,7 +39,8 @@ function Home() {
   };
 
   const fetchLibraryData = async () => {
-    const data = await fetchUserLibrary();
+    const url = import.meta.env.VITE_LOCAL_URL;
+    const data = await fetchUserLibrary(url);
 
     if(data.message == 'Failed to fetch'){
       setShowProgress(false)
@@ -48,9 +49,7 @@ function Home() {
       setShowError(true)
     }else{
       setShowProgress(false)
-      console.log(data)
-      animeLibraryProps = {"library":data}
-      setAnime(animeLibraryProps);
+      setAnime(data);
       setShowLibrary(true)
       setShowSearchResult(false)
     }
