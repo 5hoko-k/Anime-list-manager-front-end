@@ -1,4 +1,4 @@
-// import Button from '@mui/material/Button'
+import Button from '@mui/material/Button'
 // import { FetchLibrary } from "../components/FetchLibrary"
 
 function AnimeLibray({props, goToAnime}) {
@@ -7,17 +7,20 @@ function AnimeLibray({props, goToAnime}) {
     
     // const { fetchUserLibrary } = FetchLibrary();
 
-    // async function fetchPage() {
-    //   const res = await fetchUserLibrary()
-    // }
+    async function fetchPage(e) {
+      // const res = await fetchUserLibrary()
+      console.log(e.target.id)
+    }
 
     return (
         <>  
             {animeData && 
             <div>
-              {/* <div>
-              <Button variant='contained' color='success' onClick={fetchData}> Search </Button>
-              </div> */}
+              <div>
+              {pageLinks.first && <Button id='first' variant='contained' color='success' onClick={fetchPage}> First </Button>}
+              {pageLinks.next && <Button id='next' variant='contained' color='success' onClick={fetchPage}> Next </Button>}
+              {pageLinks.last && <Button id='last' variant='contained' color='success' onClick={fetchPage}> Last </Button>}
+              </div>
 
               <div className="flex flex-wrap justify-start h-full">
                 {animeData.map((anime) => (
