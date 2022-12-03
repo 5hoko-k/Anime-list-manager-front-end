@@ -1,15 +1,25 @@
 import Button from '@mui/material/Button'
-// import { FetchLibrary } from "../components/FetchLibrary"
+import { FetchLibrary } from "../components/FetchLibrary"
 
 function AnimeLibray({props, goToAnime}) {
     let animeData = props.animes;
     let pageLinks = props.pageLinks;
     
-    // const { fetchUserLibrary } = FetchLibrary();
+    const { fetchUserLibrary } = FetchLibrary();
 
     async function fetchPage(e) {
-      // const res = await fetchUserLibrary()
+      let res = null;
       console.log(e.target.id)
+
+      if(e.target.id === 'first'){
+        res = await fetchUserLibrary(pageLinks.first)
+      }else if(e.target.id === 'next'){
+        res = await fetchUserLibrary(pageLinks.next)
+      }else if(e.target.id === 'last'){
+        res = await fetchUserLibrary(pageLinks.last)
+      }
+      animeData = res.data
+      console.log(res)
     }
 
     return (
