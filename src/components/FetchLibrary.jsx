@@ -3,7 +3,7 @@ export function FetchLibrary(){
     let results = null;
 
     async function fetchUserLibrary() {
-        const url = import.meta.env.VITE_LOCAL_URL;
+        const url = import.meta.env.VITE_WEB_URL;
         console.log(url)
         try{
             const res = await fetch(url)
