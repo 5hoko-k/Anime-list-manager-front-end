@@ -3,8 +3,8 @@ export function FetchLibrary(){
     let results = null;
 
     async function fetchUserLibrary() {
-        const url = import.meta.env.WEB_URL;
-
+        const url = import.meta.env.VITE_LOCAL_URL;
+        console.log(url)
         try{
             const res = await fetch(url)
 

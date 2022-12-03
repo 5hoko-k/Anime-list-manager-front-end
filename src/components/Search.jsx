@@ -19,7 +19,7 @@ function Search(props) {
     }
 
     const fetchData = async () => {
-        const url = import.meta.env.WEB_URL + searchText
+        const url = import.meta.env.VITE_LOCAL_URL + searchText
 
         setShowProgress(true)
 
