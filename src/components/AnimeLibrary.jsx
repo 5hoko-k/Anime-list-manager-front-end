@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import Button from '@mui/material/Button'
 import { FetchLibrary } from "../components/FetchLibrary"
 
 function AnimeLibray({props, goToAnime}) {
     let animeData = props.animes;
     let pageLinks = props.pageLinks;
+    const [data, setData] = useState()
     
     const { fetchUserLibrary } = FetchLibrary();
 
@@ -18,6 +20,8 @@ function AnimeLibray({props, goToAnime}) {
       }else if(e.target.id === 'last'){
         res = await fetchUserLibrary(pageLinks.last)
       }
+
+      setData(res.data)
       animeData = res.data
       console.log(res)
     }
@@ -31,7 +35,7 @@ function AnimeLibray({props, goToAnime}) {
               {pageLinks.next && <Button id='next' variant='contained' color='success' onClick={fetchPage}> Next </Button>}
               {pageLinks.last && <Button id='last' variant='contained' color='success' onClick={fetchPage}> Last </Button>}
               </div>
-
+              
               <div className="flex flex-wrap justify-start h-full">
                 {animeData.map((anime) => (
                   <div
