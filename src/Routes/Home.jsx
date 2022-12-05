@@ -8,34 +8,11 @@ import Search from "../components/Search";
 import ListDisplay from "../components/ListDisplay";
 
 function Home() {
-  const [showLibrary, setShowLibrary] = useState(true);
-  const [showSearchResult, setShowSearchResult] = useState(false);
   const [animeData, setAnime] = useState([]);
   const [showProgress, setShowProgress] = useState(false)
   const [showError, setShowError] = useState(false)
-  const [showList, setShowList] = useState(false)
-
-  let animeLibraryProps = null;
-
-
 
   const { fetchUserLibrary } = FetchLibrary();
-
-  const navigate = useNavigate();
-
-  const goToAnime = (e) => {
-    let animeId = e.target.id;
-    let anime = animeData.library
-    anime.map((anime) => {
-      if (anime.data.id === animeId) {
-        navigate("/theAnime", {
-          state: {
-            anime: anime.data,
-          },
-        });
-      }
-    });
-  };
 
   const fetchLibraryData = async () => {
     const url = import.meta.env.VITE_WEB_URL;
