@@ -30,8 +30,7 @@ function Search(props) {
               try{
                 results = await res.json();
 
-                searchResultProps = {"searchResults": sortTheResult(results)}
-                setAnime(searchResultProps);
+                setAnime(sortTheResult(results));
                 setShowLibrary(false)
                 setShowError(false)
                 setShowSearchResult(true)
