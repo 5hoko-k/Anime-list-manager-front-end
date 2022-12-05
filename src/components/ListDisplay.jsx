@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 function ListDisplay(props) {
-    let animeData = props.theAnimes.searchResults;
+    let animeData = props.theAnimes.animes;
     const navigate = useNavigate();
 
     const goToAnime = (e) => {
