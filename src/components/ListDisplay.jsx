@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { FetchLibrary } from "../components/FetchLibrary"
+import Button from '@mui/material/Button'
 
 function ListDisplay(props) {
     let animeData = props.theAnimes.animes;
+    let pageLinks = props.theAnimes.pageLinks;
     const navigate = useNavigate();
 
     const goToAnime = (e) => {
