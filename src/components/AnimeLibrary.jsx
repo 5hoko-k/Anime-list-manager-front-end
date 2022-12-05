@@ -1,11 +1,9 @@
-import { useState } from 'react'
 import Button from '@mui/material/Button'
 import { FetchLibrary } from "../components/FetchLibrary"
 
 function AnimeLibray({props, goToAnime}) {
     let animeData = props.animes;
     let pageLinks = props.pageLinks;
-    const [data, setData] = useState()
     
     const { fetchUserLibrary } = FetchLibrary();
 
