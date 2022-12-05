@@ -79,7 +79,7 @@ function Home() {
 
         <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500 border border-green-600">
 
-          { showList && <ListDisplay theAnimes={animeData} />}
+          <ListDisplay theAnimes={animeData} />
 
           {showError && <ErrorPage />}
         </div>
