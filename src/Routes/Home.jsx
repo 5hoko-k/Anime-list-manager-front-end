@@ -8,6 +8,7 @@ import AnimeLibray from "../components/AnimeLibrary";
 import ErrorPage from "../components/ErrorPage";
 import SearchResults from "../components/SearchResults";
 import Search from "../components/Search";
+import ListDisplay from "../components/ListDisplay";
 
 function Home() {
   const [showLibrary, setShowLibrary] = useState(true);
@@ -15,6 +16,7 @@ function Home() {
   const [animeData, setAnime] = useState([]);
   const [showProgress, setShowProgress] = useState(false)
   const [showError, setShowError] = useState(false)
+  const [showList, setShowList] = useState(false)
 
   let animeLibraryProps = null;
 
@@ -79,6 +81,8 @@ function Home() {
           {showLibrary && <AnimeLibray props={animeData} goToAnime={goToAnime} />}
 
           { showSearchResult && <SearchResults theAnimes={animeData} />}
+
+          { showList && <ListDisplay theAnimes={animeData} />}
 
           {showError && <ErrorPage />}
         </div>
