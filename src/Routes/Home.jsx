@@ -78,9 +78,6 @@ function Home() {
         <Search libraryTrigger={setShowLibrary} searchResultTrigger={setShowSearchResult} errorTrigger={setShowError} setAnimeList={setAnime} progressBarTrigger={setShowProgress}/>
 
         <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500 border border-green-600">
-          {showLibrary && <AnimeLibray props={animeData} goToAnime={goToAnime} />}
-
-          { showSearchResult && <SearchResults theAnimes={animeData} />}
 
           { showList && <ListDisplay theAnimes={animeData} />}
 
