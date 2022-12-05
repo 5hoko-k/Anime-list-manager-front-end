@@ -29,8 +29,10 @@ function Search(props) {
           if(res.status>=200 && res.status<=300){
               try{
                 results = await res.json();
-
-                setAnime(sortTheResult(results));
+                console.log(results.animes)
+                setAnime({
+                  "animes": sortTheResult(results.animes),
+                  "pageLinks": res.pageLinks});
                 setShowLibrary(false)
                 setShowError(false)
                 setShowSearchResult(true)
