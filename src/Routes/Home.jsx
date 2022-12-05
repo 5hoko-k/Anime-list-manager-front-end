@@ -2,11 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FetchLibrary } from "../components/FetchLibrary"
 import LinearProgress from '@mui/material/LinearProgress';
-import Button from '@mui/material/Button'
 import Footer from "../components/Footer";
-import AnimeLibray from "../components/AnimeLibrary";
 import ErrorPage from "../components/ErrorPage";
-import SearchResults from "../components/SearchResults";
 import Search from "../components/Search";
 import ListDisplay from "../components/ListDisplay";
 
