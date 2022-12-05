@@ -20,14 +20,10 @@ function Home() {
 
     if(data.message == 'Failed to fetch'){
       setShowProgress(false)
-      setShowLibrary(false)
-      setShowSearchResult(false)
       setShowError(true)
     }else{
       setShowProgress(false)
       setAnime(data);
-      setShowLibrary(true)
-      setShowSearchResult(false)
     }
     
   };
@@ -37,7 +33,6 @@ function Home() {
     setTimeout(function () {
       setShowProgress(true)
     }, 1000)
-    setShowLibrary(true)
   }, []);
 
   return (
@@ -49,7 +44,7 @@ function Home() {
 
       <div className="mx-auto w-3/4 mt-36 h-full">
 
-        <Search libraryTrigger={setShowLibrary} searchResultTrigger={setShowSearchResult} errorTrigger={setShowError} setAnimeList={setAnime} progressBarTrigger={setShowProgress}/>
+        <Search errorTrigger={setShowError} setAnimeList={setAnime} progressBarTrigger={setShowProgress}/>
 
         <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500 border border-green-600">
 

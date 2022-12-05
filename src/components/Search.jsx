@@ -3,12 +3,9 @@ import Kitsu from "kitsu";
 import Button from '@mui/material/Button'
 
 function Search(props) {
-    let setShowLibrary = props.libraryTrigger
-    let setShowSearchResult = props.searchResultTrigger
     let setShowError = props.errorTrigger
     let setAnime = props.setAnimeList
     let setShowProgress = props.progressBarTrigger
-    let searchResultProps = null;
 
     const [searchText, setSearchText] = useState("");
     const api = new Kitsu();
@@ -33,9 +30,7 @@ function Search(props) {
                 setAnime({
                   "animes": sortTheResult(results.animes),
                   "pageLinks": res.pageLinks});
-                setShowLibrary(false)
                 setShowError(false)
-                setShowSearchResult(true)
                 setShowProgress(false)
               }catch(err){
                 console.log(err)
