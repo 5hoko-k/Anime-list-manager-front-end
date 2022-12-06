@@ -5,6 +5,8 @@ import Button from '@mui/material/Button'
 function ListDisplay(props) {
     let animeData = props.theAnimes.animes;
     let pageLinks = props.theAnimes.pageLinks;
+    let setData = props.animeSetter;
+
     const navigate = useNavigate();
 
     const goToAnime = (e) => {
@@ -35,9 +37,11 @@ function ListDisplay(props) {
           res = await fetchUserLibrary(pageLinks.last)
         }
   
-        setData(res.data)
+        setData({
+          "animes": res.data,
+          "pageLinks": res.links})
         animeData = res.data
-        console.log(res)
+        console.log(res.data)
       }
 
       
