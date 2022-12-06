@@ -48,7 +48,7 @@ function Home() {
 
         <div className="flex mx-auto h-full p-5 bg-bushGreen-shades-500 border border-green-600">
 
-          <ListDisplay theAnimes={animeData} animeSetter={setAnime}/>
+          <ListDisplay theAnimes={animeData} setAnimeList={setAnime} />
 
           {showError && <ErrorPage />}
         </div>
