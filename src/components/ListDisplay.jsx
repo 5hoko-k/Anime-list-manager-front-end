@@ -5,7 +5,7 @@ import Button from '@mui/material/Button'
 function ListDisplay(props) {
     let animeData = props.theAnimes.animes;
     let pageLinks = props.theAnimes.pageLinks;
-    let setData = props.animeSetter;
+    let setAnime = props.setAnimeList;
 
     const navigate = useNavigate();
 
@@ -27,21 +27,31 @@ function ListDisplay(props) {
 
       async function fetchPage(e) {
         let res = null;
+        let url = import.meta.env.VITE_LOCAL_URL + "paging/"
         console.log(e.target.id)
   
-        if(e.target.id === 'first'){
-          res = await fetchUserLibrary(pageLinks.first)
-        }else if(e.target.id === 'next'){
-          res = await fetchUserLibrary(pageLinks.next)
+        if(e.target.id === 'next'){
+          res = await fetch(url, { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ "url": pageLinks.next })
+          })
+
+        }else if(e.target.id === 'first'){
+          res = await fetchUserLibrary(url + pageLinks.first)
         }else if(e.target.id === 'last'){
-          res = await fetchUserLibrary(pageLinks.last)
+          res = await fetchUserLibrary(url + pageLinks.last)
         }
   
-        setData({
+        console.log(res)
+        console.log(res.links)
+        setAnime({
           "animes": res.data,
           "pageLinks": res.links})
         animeData = res.data
-        console.log(res.data)
+
       }
 
       
