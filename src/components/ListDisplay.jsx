@@ -5,6 +5,7 @@ import Button from '@mui/material/Button'
 function ListDisplay(props) {
     let animeData = props.theAnimes.animes;
     let pageLinks = props.theAnimes.pageLinks;
+    let id = props.theAnimes.id
     let setAnime = props.setAnimeList;
 
     const navigate = useNavigate();
@@ -27,7 +28,12 @@ function ListDisplay(props) {
 
       async function fetchPage(e) {
         let res = null;
-        let url = import.meta.env.VITE_LOCAL_URL + "paging/"
+        let url = null;
+        if(id === 'library'){
+          url = import.meta.env.VITE_LOCAL_URL + "paging/"
+        }else if(id === 'search'){
+          url = import.meta.env.VITE_LOCAL_URL + "searchPaging/"
+        }
         console.log(e.target.id)
   
         if(e.target.id === 'next'){
