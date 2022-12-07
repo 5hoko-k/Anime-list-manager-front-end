@@ -34,7 +34,6 @@ function ListDisplay(props) {
         }else if(id === 'search'){
           url = import.meta.env.VITE_LOCAL_URL + "searchPaging/"
         }
-        console.log(e.target.id)
   
         if(e.target.id === 'next'){
           res = await fetchLibraryPage(url, pageLinks.next)
@@ -44,12 +43,9 @@ function ListDisplay(props) {
           res = await fetchLibraryPage(url, pageLinks.last)
         }
   
-        console.log(res)
-        console.log(res.pageLinks)
         setAnime({
           "animes": res.animes,
           "pageLinks": res.pageLinks})
-        animeData = res.data
 
       }
 

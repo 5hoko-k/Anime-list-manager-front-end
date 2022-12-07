@@ -8,10 +8,8 @@ export function FetchLibrary(){
 
             if(res.status>=200 && res.status<=300){
                 results = await res.json();
-                console.log(results)
                 return results;
             }else{
-                console.log(res)
                 throw new Error(res.statusText)
             }
         }catch(err){
@@ -32,10 +30,8 @@ export function FetchLibrary(){
 
             if(res.status>=200 && res.status<=300){
                 results = await res.json()
-                console.log(results)
                 return results;
             }else{
-                console.log(res)
                 throw new Error(res.statusText)
             }
         }catch(err){
