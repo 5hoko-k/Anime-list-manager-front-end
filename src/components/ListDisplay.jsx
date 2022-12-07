@@ -31,14 +31,7 @@ function ListDisplay(props) {
         console.log(e.target.id)
   
         if(e.target.id === 'next'){
-          res = await fetch(url, { 
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ "url": pageLinks.next })
-          })
-
+          res = await fetchUserLibrary(url + pageLinks.next)
         }else if(e.target.id === 'first'){
           res = await fetchUserLibrary(url + pageLinks.first)
         }else if(e.target.id === 'last'){
@@ -46,10 +39,10 @@ function ListDisplay(props) {
         }
   
         console.log(res)
-        console.log(res.links)
+        console.log(res.pageLinks)
         setAnime({
-          "animes": res.data,
-          "pageLinks": res.links})
+          "animes": res.animes,
+          "pageLinks": res.pageLinks})
         animeData = res.data
 
       }
