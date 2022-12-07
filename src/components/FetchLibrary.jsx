@@ -31,7 +31,7 @@ export function FetchLibrary(){
               })
 
             if(res.status>=200 && res.status<=300){
-                results = await response.json()
+                results = await res.json()
                 console.log(results)
                 return results;
             }else{
