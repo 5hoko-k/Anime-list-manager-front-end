@@ -23,7 +23,7 @@ function ListDisplay(props) {
         });
       };
 
-      const { fetchUserLibrary } = FetchLibrary();
+      const { fetchLibraryPage } = FetchLibrary();
 
       async function fetchPage(e) {
         let res = null;
@@ -31,11 +31,11 @@ function ListDisplay(props) {
         console.log(e.target.id)
   
         if(e.target.id === 'next'){
-          res = await fetchUserLibrary(url + pageLinks.next)
+          res = await fetchLibraryPage(url, pageLinks.next)
         }else if(e.target.id === 'first'){
-          res = await fetchUserLibrary(url + pageLinks.first)
+          res = await fetchLibraryPage(url, pageLinks.first)
         }else if(e.target.id === 'last'){
-          res = await fetchUserLibrary(url + pageLinks.last)
+          res = await fetchLibraryPage(url, pageLinks.last)
         }
   
         console.log(res)
