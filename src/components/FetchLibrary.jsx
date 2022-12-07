@@ -20,14 +20,14 @@ export function FetchLibrary(){
         }
     }
 
-    async function fetchLibraryPage(url) {
+    async function fetchLibraryPage(url, pageLinks) {
         try{
             const res = await fetch(url, { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ "url": pageLinks.next })
+                body: JSON.stringify({ "url": pageLinks })
               })
 
             if(res.status>=200 && res.status<=300){
