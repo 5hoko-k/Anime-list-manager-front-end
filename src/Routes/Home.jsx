@@ -17,13 +17,19 @@ function Home() {
   const fetchLibraryData = async () => {
     const url = import.meta.env.VITE_WEB_URL;
     const data = await fetchUserLibrary(url);
+    let libraryObj = null;
 
     if(data.message == 'Failed to fetch'){
       setShowProgress(false)
       setShowError(true)
     }else{
       setShowProgress(false)
-      setAnime(data);
+      libraryObj = {
+        "animes": data.animes,
+        "pageLinks": data.pageLinks,
+        "id": "library"
+      }
+      setAnime(libraryObj);
     }
     
   };
