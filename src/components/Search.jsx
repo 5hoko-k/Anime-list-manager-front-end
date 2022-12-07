@@ -29,7 +29,7 @@ function Search(props) {
                 console.log(results.animes)
                 setAnime({
                   "animes": sortTheResult(results.animes),
-                  "pageLinks": res.pageLinks});
+                  "pageLinks": results.pageLinks});
                 setShowError(false)
                 setShowProgress(false)
               }catch(err){
