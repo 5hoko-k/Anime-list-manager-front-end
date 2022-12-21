@@ -30,9 +30,9 @@ function ListDisplay(props) {
         let res = null;
         let url = null;
         if(id === 'library'){
-          url = import.meta.env.VITE_LOCAL_URL + "paging/"
+          url = import.meta.env.VITE_WEB_URL + "paging/"
         }else if(id === 'search'){
-          url = import.meta.env.VITE_LOCAL_URL + "searchPaging/"
+          url = import.meta.env.VITE_WEB_URL + "searchPaging/"
         }
   
         if(e.target.id === 'next'){
